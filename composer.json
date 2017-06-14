@@ -24,5 +24,6 @@
   "require": {
     "php": ">=5.5.9",
     "tavy315/zendframework1": "1.*"
-  }
+  },
+  "minimum-stability": "dev"
 }
