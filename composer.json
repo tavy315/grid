@@ -18,7 +18,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "I2ct\\Component\\Grid\\: "src/I2ct/Component/Grid"
+      "I2ct\\Component\\Grid\\": "src/I2ct/Component/Grid"
     }
   },
   "require": {
