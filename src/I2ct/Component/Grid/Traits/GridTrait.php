@@ -30,11 +30,11 @@ trait GridTrait
      */
     public function getGridConfig($section, $gridName)
     {
-        if (file_exists(ROOT . '/etc/' . self::$filename) === false) {
+        if (file_exists(ROOT . '/config/' . self::$filename) === false) {
             throw new \Exception('Could not find the ' . self::$filename . ' file');
         }
 
-        $grids = Yaml::parse(file_get_contents(ROOT . '/etc/' . self::$filename));
+        $grids = Yaml::parse(file_get_contents(ROOT . '/config/' . self::$filename));
 
         if (!isset($grids[$section][$gridName])) {
             throw new \Exception(sprintf('Could not load grid configuration for [%s][%s]', $section, $gridName));
