@@ -6,7 +6,6 @@ use I2ct\Component\Grid\DataFilter\ZendDataFilter;
 use I2ct\Component\Grid\DataSource\DataSourceInterface;
 use I2ct\Component\Grid\DataSource\ZendDataSource;
 use I2ct\Component\Grid\Traits\GridTrait;
-use Salaries\Model\Payment\PaymentQuery;
 
 /**
  * Class DataGrid
