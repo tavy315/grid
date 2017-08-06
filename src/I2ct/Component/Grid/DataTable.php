@@ -6,6 +6,7 @@ use I2ct\Component\Grid\DataFilter\ZendDataFilter;
 use I2ct\Component\Grid\DataSource\DataSourceInterface;
 use I2ct\Component\Grid\DataSource\ZendDataSource;
 use I2ct\Component\Grid\Traits\GridTrait;
+use Salaries\Model\Payment\PaymentQuery;
 
 /**
  * Class DataGrid
@@ -209,7 +210,7 @@ class DataTable implements GridInterface
     }
 
     /**
-     * @param \Zend_Db_Select $select
+     * @param mixed $select
      *
      * @return self
      */
@@ -219,7 +220,12 @@ class DataTable implements GridInterface
 //            if (!in_array($sortName, $this->getColumns())) {
 //                continue;
 //            }
-            $select->order([ sprintf('%s %s', $sortName, $sortOrder) ]);
+            if ($select instanceof \Zend_Db_Select) {
+                $select->order([ sprintf('%s %s', $sortName, $sortOrder) ]);
+            }
+            if ($select instanceof \ModelCriteria) {
+                $select->orderBy($sortName, $sortOrder);
+            }
         }
 
         return $this;
@@ -228,7 +234,7 @@ class DataTable implements GridInterface
     /**
      * Create paginator
      *
-     * @param \Zend_Db_Select     $select
+     * @param mixed                                               $select
      * @param \I2ct\Component\Grid\DataSource\DataSourceInterface $dataSource
      *
      * @return self
