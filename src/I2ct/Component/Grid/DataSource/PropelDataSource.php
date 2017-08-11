@@ -51,7 +51,7 @@ class PropelDataSource implements DataSourceInterface
      */
     public function getTotalItemCount()
     {
-        return $this->pager->getLastPage();
+        return $this->pager->getNbResults();
     }
 
     /**
