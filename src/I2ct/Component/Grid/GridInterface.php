@@ -13,6 +13,34 @@ use I2ct\Component\Grid\DataSource\DataSourceInterface;
 interface GridInterface
 {
     /**
+     * Return the filters
+     *
+     * @return array
+     */
+    public function getFilters();
+
+    /**
+     * Get the processed grid data
+     *
+     * @return array
+     */
+    public function getGridData();
+
+    /**
+     * Return the pagination
+     *
+     * @return array
+     */
+    public function getPagination();
+
+    /**
+     * Return the sorters
+     *
+     * @return array
+     */
+    public function getSorters();
+
+    /**
      * Extract request params
      *
      * @param array $params
@@ -20,6 +48,13 @@ interface GridInterface
      * @return mixed
      */
     public function parseParams($params);
+
+    /**
+     * Process the data from the data source
+     *
+     * @return self
+     */
+    public function processData();
 
     /**
      * Set the data source
@@ -39,39 +74,4 @@ interface GridInterface
      * @return mixed
      */
     public function setupDataSource($select, DataSourceInterface $dataSource);
-
-    /**
-     * Process the data from the data source
-     *
-     * @return self
-     */
-    public function processData();
-
-    /**
-     * Get the processed grid data
-     *
-     * @return array
-     */
-    public function getGridData();
-
-    /**
-     * Return the filters
-     *
-     * @return array
-     */
-    public function getFilters();
-
-    /**
-     * Return the sorters
-     *
-     * @return array
-     */
-    public function getSorters();
-
-    /**
-     * Return the pagination
-     *
-     * @return array
-     */
-    public function getPagination();
 }
