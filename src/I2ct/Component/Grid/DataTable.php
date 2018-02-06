@@ -216,13 +216,13 @@ class DataTable implements GridInterface
     public function setupDataSorters($select)
     {
         foreach ($this->getSorters() as $sortName => $sortOrder) {
-//            if (!in_array($sortName, $this->getColumns())) {
-//                continue;
-//            }
             if ($select instanceof \Zend_Db_Select) {
                 $select->order([ sprintf('%s %s', $sortName, $sortOrder) ]);
             }
             if ($select instanceof \ModelCriteria) {
+                $select->orderBy($sortName, $sortOrder);
+            }
+            if ($select instanceof \Doctrine\ORM\QueryBuilder || $select instanceof \Doctrine\ORM\Query) {
                 $select->orderBy($sortName, $sortOrder);
             }
         }
